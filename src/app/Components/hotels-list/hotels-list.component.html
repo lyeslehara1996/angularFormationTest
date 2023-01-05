@@ -15,9 +15,10 @@
 
             <div class="input-group input-group-sm mb-3">
                 <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroup-sizing-sm">filter actuels:</span>
+                    <span class="input-group-text" id="inputGroup-sizing-sm">filter actuels:     {{hotelfilter}}</span>
+                  
                 </div>
-                <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+                <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" [(ngModel)]="hotelfilter">
             </div>
         </div>
     </div>
@@ -26,9 +27,13 @@
             <div class="card mb-5">
                 <img class="card-img-top" src="{{item.imageUrl}}" alt="Card image cap">
                 <div class="card-body">
-                    <h5 class="card-title">{{item.hotelName}}</h5>
+                    <h5 class="card-title">{{item.hotelName | uppercase }} </h5>
                     <p class="card-text">{{item.description}}</p>
-                    <span *ngIf="showNouveau" class="alert alert-info pt-1 pb-1 pr-3 pl-3">nouveau</span>
+                    <div class="flex gap-x-20">
+                        <span *ngIf="showNouveau" class="alert alert-info pt-1 pb-1 pr-3 pl-3">nouveau</span>
+                        <span class="alert alert-info pt-1 pb-1 pr-3 pl-3">{{item.price | currency :'DZ':'symbol':'1.2-2':'fr' }}</span>
+
+                    </div>
                 </div>
             </div>
         </div>
